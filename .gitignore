@@ -1,0 +1,55 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment variables
+.env
+.env.local
+.env.test
+
+# Build folders
+dist/
+build/
+
+# Coverage folder (for testing)
+coverage/
+
+# MongoDB data
+data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# IDEs
+.idea/
+
+# Debugger
+*.tgz
+
+# Testing
+test-reports/
+
+# Misc
+.cache/
+.tmp/
+.sentry/
+
+# Optional
+*.pid
+*.seed
+*.tgz
