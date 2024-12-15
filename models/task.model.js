@@ -24,6 +24,7 @@ const taskSchema = new mongoose.Schema(
       required: true,
       enum: [1, 2, 3, 4, 5], // Priority levels 1 to 5
     },
+    
     status: {
       type: String,
       required: true,

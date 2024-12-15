@@ -39,7 +39,12 @@ export const createTask = async (req, res) => {
 // Controller to get tasks with sorting
 export const getTasks = async (req, res) => {
   try {
-    const { sortBy, order, priority, status } = req.query;
+    const { sortBy, order, priority, status, userId } = req.query;
+
+    // Check if userId is provided
+    if (!userId) {
+      return res.status(400).json({ message: 'UserId is required' });
+    }
 
     let sortCriteria = {};
     if (sortBy === 'startTime') {
@@ -50,7 +55,7 @@ export const getTasks = async (req, res) => {
       sortCriteria.priority = order === 'desc' ? -1 : 1;
     }
 
-    const query = {};
+    const query = { userId }; // Ensure only tasks for the specified userId are fetched
     if (priority) {
       query.priority = priority;
     }
@@ -58,15 +63,15 @@ export const getTasks = async (req, res) => {
       query.status = status;
     }
 
-  
+    // Find tasks matching query and sort criteria
     const tasks = await Task.find(query).sort(sortCriteria);
-    
 
     res.status(200).json(tasks);
   } catch (error) {
     res.status(500).json({ message: 'Server Error', error });
   }
 };
+
 
 
 // Update a task
